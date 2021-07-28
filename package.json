@@ -1,0 +1,31 @@
+{
+  "name": "limbobets",
+  "version": "1.0.0",
+  "description": "Accepts a player seed, server seed and range of nonces to determine the results of limbo bets on Stake.com",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dupeddonk/Limbo.git"
+  },
+  "keywords": [
+    "Stake.com",
+    "Limbo",
+    "provably",
+    "fair",
+    "player",
+    "seed",
+    "server",
+    "seed",
+    "nonce"
+  ],
+  "author": "dupeddonk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dupeddonk/Limbo/issues"
+  },
+  "homepage": "https://github.com/dupeddonk/Limbo#readme",
+  "type": "module"
+}
