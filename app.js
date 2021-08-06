@@ -13,7 +13,7 @@ let clientSeed = '<YOUR CLIENT SEED>';
 let firstNonce = 0; 
 
 // set final nonce - the number of bets calculated will be (final nonce - first nonce).  More bets = more time to execute.
-let finalNonce = 1000000; 
+let finalNonce = 10000; 
 
 //Add or remove any targets within the brackets, seperated by commas.  More targets = more time to execute.
 let targets = [1.5, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
