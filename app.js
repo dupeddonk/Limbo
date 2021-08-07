@@ -4,7 +4,7 @@ import { stdout } from 'process';
 
 //========================================================
 //set the server seed, must be in quotes
-let serverSeed = '<YOUR SERVER SEED>';  
+let serverSeed = 'test';  
 
 // set the client seed, must be in quotes
 let clientSeed = '<YOUR CLIENT SEED>';
@@ -16,7 +16,7 @@ let firstNonce = 0;
 let finalNonce = 10000; 
 
 //Add or remove any targets within the brackets, seperated by commas.  More targets = more time to execute.
-let targets = [1.5, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
+let targets = [1.5, 2, 3];
 
 
 // changing anything below this line might break something
@@ -80,7 +80,15 @@ function getLimboResult(serverSeed, clientSeed, nonce){
 }
 
 function simulateBets(){
-  let results = []
+  let results = [];
+
+  for (let i = 0; i < nonces.length; i++) {
+    const nonce = nonces[i];
+    let currentResult = getLimboResult(serverSeed, clientSeed, nonce);
+    results.push(currentResult);
+  }
+
+
     for (let i = 0; i < targets.length; i++) {
         const target = targets[i];
         let hits = 0;
@@ -88,7 +96,6 @@ function simulateBets(){
         for (let i = 0; i < nonces.length; i++) {
             const nonce = nonces[i];
             let currentResult = getLimboResult(serverSeed, clientSeed, nonce);
-            results.push(currentResult);
             if(currentResult >= target){
                 hits += 1;
             };
@@ -97,11 +104,11 @@ function simulateBets(){
         resultByTarget.push(currentTarget);
     }
 
-    fs.writeFile("results/results.json", JSON.stringify(results), err => {
+    fs.writeFile(`results/${serverSeed}.js`, 'const RESULTS = ' + JSON.stringify(results) + '\n export default RESULTS;', err => {
         if (err) {
             throw err;
         }
-        console.log('Each rolled number has been saved to \'./results.json\' . Running this program again will ovewrite the file. ')
+        console.log('Each rolled number has been saved to \'./results.js\' . Running this program again will ovewrite the file. ')
     })
   return resultByTarget;
 }
